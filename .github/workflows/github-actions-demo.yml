@@ -16,6 +16,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - name: Test build
-        run: |
-          cd /app && gradle build
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+          build-root-directory: app
       - run: echo "🍏 This job's status is ${{ job.status }}."
