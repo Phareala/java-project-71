@@ -11,8 +11,7 @@ import java.util.Map;
 public class Parsing {
 
     public static Map<String, Object> getJsonString(String pathFile) throws IOException {
-        String filePath = pathFile;
-        Path path = Paths.get(filePath).toAbsolutePath().normalize();
+        Path path = Paths.get(pathFile).toAbsolutePath().normalize();
         Map<String, Object> result =
                 new ObjectMapper().readValue(path.toFile(), HashMap.class);
         return result;
