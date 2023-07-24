@@ -44,7 +44,7 @@ public class Differ {
                 diffTree.append("\n" + " - " + key + ": " + map1.get(key));
 //                diffTree.add(Map.of("removed", Arrays.asList(key, map1.get(key))));
             } else if (!map1.containsKey(key) && map2.containsKey(key)) {
-                diffTree.append("\n" + " + " + key + ": " + map1.get(key));
+                diffTree.append("\n" + " + " + key + ": " + map2.get(key));
 //                diffTree.add(Map.of("added", Arrays.asList(key, map2.get(key))));
             } else if (map1.get(key) == null && map2.get(key) == null) {
                 diffTree.append("\n" + "   " + key + ": " + map1.get(key));
@@ -53,8 +53,9 @@ public class Differ {
                 diffTree.append("\n" + "   " + key + ": " + map1.get(key));
 //                diffTree.add(Map.of("unchanged", Arrays.asList(key, map1.get(key))));
             } else {
-                diffTree.append("\n" + " - " + key + ": " + map2.get(key));
-                diffTree.append("\n" + " + " + key + ": " + map1.get(key));
+                diffTree.append("\n" + " - " + key + ": " + map1.get(key));
+                diffTree.append("\n" + " + " + key + ": " + map2.get(key));
+
 //                diffTree.add(Map.of("updated", Arrays.asList(key, map2.get(key), map1.get(key))));
             }
         }
