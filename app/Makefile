@@ -17,4 +17,8 @@ setup:
 	./gradlew clean
 	./gradlew installDist
 
+report:
+	./gradlew jacocoTestReport
+
+
 .PHONY: build
