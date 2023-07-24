@@ -10,12 +10,17 @@ import java.nio.file.Paths;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AppTest {
-    private static String jsonExpected;
+    private static String stylishExpected;
+    private static String plainExpected;
 
     @BeforeAll
     static void prepareExpected() throws Exception {
-        String expectedJsonPath = "src/test/resources/fixtures/JsonExpected.txt";
-        jsonExpected = getExpectedData(expectedJsonPath);
+
+        String expectedStylishPath = "src/test/resources/stylishExpected.txt";
+        String expectedPlainPath = "src/test/resources/plainExpected.txt";
+
+        stylishExpected = getExpectedData(expectedStylishPath);
+        plainExpected = getExpectedData(expectedPlainPath);
     }
 
     public static String getExpectedData(String filePath) throws Exception {
@@ -27,10 +32,34 @@ public class AppTest {
     }
 
     @Test
-    void testJson() throws Exception {
-        var path1 = Parsing.getJsonString("src/test/resources/fixtures/file1.json");
-        var path2 = Parsing.getJsonString("src/test/resources/fixtures/file2.json");
-        String result = Differ.buildDiff(path1, path2);
-        assertThat(result).isEqualTo(jsonExpected);
+    void testJsonStylish() throws Exception {
+        String path1 = "src/test/resources/file1.json";
+        String path2 = "src/test/resources/file2.json";
+        String result = Differ.genDiff(path1, path2, "stylish");
+        assertThat(result).isEqualTo(stylishExpected);
+    }
+
+    @Test
+    void testYamlStylish() throws Exception {
+        String path1 = "src/test/resources/file1.yml";
+        String path2 = "src/test/resources/file2.yml";
+        String result = Differ.genDiff(path1, path2, "stylish");
+        assertThat(result).isEqualTo(stylishExpected);
+    }
+
+    @Test
+    void testJsonPlain() throws Exception {
+        String path1 = "src/test/resources/file1.json";
+        String path2 = "src/test/resources/file2.json";
+        String result = Differ.genDiff(path1, path2, "plain");
+        assertThat(result).isEqualTo(plainExpected);
+    }
+
+    @Test
+    void testYamlPlain() throws Exception {
+        String path1 = "src/test/resources/file1.yml";
+        String path2 = "src/test/resources/file2.yml";
+        String result = Differ.genDiff(path1, path2, "plain");
+        assertThat(result).isEqualTo(plainExpected);
     }
 }

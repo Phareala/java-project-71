@@ -6,7 +6,7 @@ run-dist:
 start:
 	./gradlew clean
 	./gradlew installDist
-	./build/install/app/bin/app src/test/resources/fixtures/file1.json src/test/resources/fixtures/file2.json
+	./build/install/app/bin/app src/test/resources/file1.yml src/test/resources/file2.yml
 
 clear:
 	./gradlew clean

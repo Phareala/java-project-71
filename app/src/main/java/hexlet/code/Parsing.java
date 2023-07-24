@@ -1,6 +1,7 @@
 package hexlet.code;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -10,11 +11,14 @@ import java.util.Map;
 
 public class Parsing {
 
-    public static Map<String, Object> getJsonString(String pathFile) throws IOException {
+    public static Map<String, Object> parser(String pathFile, String fileFormat) throws IOException {
         Path path = Paths.get(pathFile).toAbsolutePath().normalize();
-        Map<String, Object> result =
-                new ObjectMapper().readValue(path.toFile(), HashMap.class);
-        return result;
+        return switch (fileFormat) {
+            case "json" -> new ObjectMapper().readValue(path.toFile(), HashMap.class);
+            case "yml", "yaml" -> new YAMLMapper().readValue(path.toFile(), HashMap.class);
+
+            default -> throw new IllegalStateException("Unexpected format: " + fileFormat);
+        };
     }
 
 }

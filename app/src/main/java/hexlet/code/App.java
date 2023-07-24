@@ -20,7 +20,7 @@ class App implements Callable<Integer> {
     private boolean version = false;
 
     @Option(names = { "-f", "--format" }, paramLabel = "format", description = "output format [default: stylish]")
-    String file;
+    String format = "stylish";
 
     @Parameters(paramLabel = "filepath1", description = "path to first file")
     String filepath1;
@@ -30,7 +30,8 @@ class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        System.out.println(Differ.buildDiff(Parsing.getJsonString(filepath1), Parsing.getJsonString(filepath2)));
+        System.out.println(Differ.genDiff(filepath1, filepath2, format));
+//        System.out.println(Differ.buildDiff(Parsing.getYamlString(filepath1), Parsing.getYamlString(filepath2)));
 //        System.out.println(Parsing.getJsonString(filepath1));
 //        System.out.println(Parsing.getJsonString(filepath2));
         return 1;
