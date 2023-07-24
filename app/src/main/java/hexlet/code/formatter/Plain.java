@@ -13,6 +13,9 @@ public class Plain {
                 var key = element.getValue().get(0);
                 var value = element.getValue();
                 switch (element.getKey()) {
+                    case "unaltered" -> {
+
+                    }
                     case "removable" -> result.append(String.format("\nProperty %s was removed",
                             printObject(key)
                     ));
@@ -22,7 +25,10 @@ public class Plain {
                     ));
                     case "changeable" -> result.append("\nProperty ").append(printObject(key))
                             .append(" was updated. From ").append(printObject(value.get(1)))
-                            .append(" to ").append(printObject(value.get(2)));
+                            .append(" to ").append(printObject(value.get(2)
+                    ));
+
+                    default -> throw new IllegalStateException("Unexpected value: " + key);
                 }
             }
         }

@@ -18,6 +18,7 @@ public class Stylish {
                         result.append(String.format("\n - %s: %s", key, value.get(1)));
                         result.append(String.format("\n + %s: %s", key, value.get(2)));
                     }
+                    default -> throw new IllegalStateException("Unexpected value: " + element.getKey());
                 }
             }
         }
