@@ -44,8 +44,6 @@ public class Differ {
                 diffTree.append("\n" + " - ").append(key).append(": ").append(map1.get(key));
             } else if (!map1.containsKey(key) && map2.containsKey(key)) {
                 diffTree.append("\n" + " + ").append(key).append(": ").append(map2.get(key));
-            } else if (map1.get(key) == null && map2.get(key) == null) {
-                diffTree.append("\n" + "   ").append(key).append(": ").append(map1.get(key));
             } else if ((map1.get(key) != null && map2.get(key) != null) && (map1.get(key).equals(map2.get(key)))) {
                 diffTree.append("\n" + "   ").append(key).append(": ").append(map1.get(key));
             } else {
