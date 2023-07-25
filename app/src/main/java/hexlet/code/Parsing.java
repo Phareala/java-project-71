@@ -17,7 +17,7 @@ public class Parsing {
             case "json" -> new ObjectMapper().readValue(path.toFile(), HashMap.class);
             case "yml", "yaml" -> new YAMLMapper().readValue(path.toFile(), HashMap.class);
 
-            default -> throw new IllegalStateException("Unexpected format: " + fileFormat);
+            default -> throw new IllegalStateException("Unexpected extension: " + fileFormat);
         };
     }
 
