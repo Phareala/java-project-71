@@ -12,6 +12,9 @@ install:
 run-dist:
 	make -C run-dist
 
+run:
+	make -C app run
+
 test:
 	make -C app test
 
@@ -21,4 +24,9 @@ report:
 lint:
 	make -C app lint
 
+update-deps:
+	make -C app update-deps
+
+
+build-run: build run
 .PHONY: build
