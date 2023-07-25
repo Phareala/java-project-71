@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Formatter {
-    public static String format(List<Map<String, List<Object>>> diffList, String format) throws JsonProcessingException {
+    public static String format(List<Map<String, List<Object>>> diffList, String format)
+            throws JsonProcessingException {
 
         return switch (format) {
             case "stylish" -> Stylish.format(diffList);
