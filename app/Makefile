@@ -12,9 +12,6 @@ install:
 run-dist:
 	./build/install/app/bin/app
 
-run:
-	./gradlew run
-
 test:
 	./gradlew test
 
@@ -23,12 +20,6 @@ report:
 
 lint:
 	./gradlew checkstyleMain checkstyleTest
-
-update-deps:
-	./gradlew useLatestVersions
-
-
-build-run: build run
 
 
 .PHONY: build
