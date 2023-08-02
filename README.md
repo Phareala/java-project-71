@@ -44,8 +44,3 @@ make clean
 ```sh
 make report
 ```
-
-## Run update dependencies
-```sh
-make update-deps
-```
