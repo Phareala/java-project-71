@@ -24,6 +24,7 @@ report:
 lint:
 	./gradlew checkstyleMain checkstyleTest
 
+
 update-deps:
 	./gradlew useLatestVersions
 
