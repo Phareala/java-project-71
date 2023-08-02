@@ -1,5 +1,8 @@
 .DEFAULT_GOAL := build-run
 
+build:
+	./gradlew clean build
+
 clean:
 	./gradlew clean
 
