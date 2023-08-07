@@ -11,12 +11,12 @@ public class Stylish {
                 var key = element.getValue().get(0);
                 var value = element.getValue();
                 switch (element.getKey()) {
-                    case "removable" -> result.append(String.format("\n - %s: %s", key, value.get(1)));
-                    case "added" -> result.append(String.format("\n + %s: %s", key, value.get(1)));
-                    case "unaltered" -> result.append(String.format("\n   %s: %s", key, value.get(1)));
+                    case "removable" -> result.append(String.format("\n  - %s: %s", key, value.get(1)));
+                    case "added" -> result.append(String.format("\n  + %s: %s", key, value.get(1)));
+                    case "unaltered" -> result.append(String.format("\n    %s: %s", key, value.get(1)));
                     case "changeable" -> {
-                        result.append(String.format("\n - %s: %s", key, value.get(1)));
-                        result.append(String.format("\n + %s: %s", key, value.get(2)));
+                        result.append(String.format("\n  - %s: %s", key, value.get(1)));
+                        result.append(String.format("\n  + %s: %s", key, value.get(2)));
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + element.getKey());
                 }
