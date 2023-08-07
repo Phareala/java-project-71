@@ -14,10 +14,10 @@ public class AppTest {
     private static String plainExpected;
     private static String jsonExpected;
 
-    String pathJson1 = "src/test/resources/file1.yml";
-    String pathJson2 = "src/test/resources/file2.yml";
-    String pathYaml1 = "src/test/resources/file1.yml";
-    String pathYaml2 = "src/test/resources/file2.yml";
+    private final String pathJson1 = "src/test/resources/file1.yml";
+    private final String pathJson2 = "src/test/resources/file2.yml";
+    private final String pathYaml1 = "src/test/resources/file1.yml";
+    private final String pathYaml2 = "src/test/resources/file2.yml";
 
 
 
