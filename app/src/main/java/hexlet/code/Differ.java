@@ -18,6 +18,10 @@ public class Differ {
         return Formatter.format(diffList, format);
     }
 
+    public static String generate(String firstFilePath, String secondFilePath) throws Exception {
+        return generate(firstFilePath, secondFilePath, "stylish");
+    }
+
     public static List<Map<String, List<Object>>> buildDiff(Map<String, Object> map1, Map<String, Object> map2) {
         List<Map<String, List<Object>>> diffTree = new ArrayList<>();
         var allKeys = getSortedKeys(map1, map2);
