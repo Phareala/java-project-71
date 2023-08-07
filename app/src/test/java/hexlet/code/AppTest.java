@@ -42,37 +42,37 @@ public class AppTest {
 
     @Test
     void testJsonStylish() throws Exception {
-        String result = Differ.genDiff(pathJson1, pathJson2, "stylish");
+        String result = Differ.generate(pathJson1, pathJson2, "stylish");
         assertThat(result).isEqualTo(stylishExpected);
     }
 
     @Test
     void testYamlStylish() throws Exception {
-        String result = Differ.genDiff(pathYaml1, pathYaml2, "stylish");
+        String result = Differ.generate(pathYaml1, pathYaml2, "stylish");
         assertThat(result).isEqualTo(stylishExpected);
     }
 
     @Test
     void testJsonPlain() throws Exception {
-        String result = Differ.genDiff(pathJson1, pathJson2, "plain");
+        String result = Differ.generate(pathJson1, pathJson2, "plain");
         assertThat(result).isEqualTo(plainExpected);
     }
 
     @Test
     void testYamlPlain() throws Exception {
-        String result = Differ.genDiff(pathYaml1, pathYaml2, "plain");
+        String result = Differ.generate(pathYaml1, pathYaml2, "plain");
         assertThat(result).isEqualTo(plainExpected);
     }
 
     @Test
     void testJsonJson() throws Exception {
-        String result = Differ.genDiff(pathJson1, pathJson2, "json");
+        String result = Differ.generate(pathJson1, pathJson2, "json");
         assertThat(result).isEqualTo(jsonExpected);
     }
 
     @Test
     void testYamlJson() throws Exception {
-        String result = Differ.genDiff(pathYaml1, pathYaml2, "json");
+        String result = Differ.generate(pathYaml1, pathYaml2, "json");
         assertThat(result).isEqualTo(jsonExpected);
     }
 }

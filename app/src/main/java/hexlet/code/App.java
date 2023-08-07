@@ -30,7 +30,7 @@ class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        System.out.println(Differ.genDiff(filepath1, filepath2, format));
+        System.out.println(Differ.generate(filepath1, filepath2, format));
 //        System.out.println(Differ.buildDiff(Parsing.getYamlString(filepath1), Parsing.getYamlString(filepath2)));
 //        System.out.println(Parsing.getJsonString(filepath1));
 //        System.out.println(Parsing.getJsonString(filepath2));

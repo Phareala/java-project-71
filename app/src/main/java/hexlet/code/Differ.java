@@ -10,7 +10,7 @@ import java.util.TreeSet;
 
 public class Differ {
 
-    public static String genDiff(String firstFilePath, String secondFilePath, String format) throws Exception {
+    public static String generate(String firstFilePath, String secondFilePath, String format) throws Exception {
 
         Map<String, Object> firstFile = Parsing.parser(firstFilePath, getExtension(firstFilePath));
         Map<String, Object> secondFile = Parsing.parser(secondFilePath, getExtension(secondFilePath));
