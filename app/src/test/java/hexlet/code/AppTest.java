@@ -41,38 +41,35 @@ public class AppTest {
     }
 
     @Test
-    void testJsonStylish() throws Exception {
-        String result = Differ.generate(pathJson1, pathJson2, "stylish");
-        assertThat(result).isEqualTo(stylishExpected);
+    void testStylish() throws Exception {
+        String resultDefaultJson = Differ.generate(pathJson1, pathJson2);
+        assertThat(resultDefaultJson).isEqualTo(stylishExpected);
+
+        String resultDefaultYaml = Differ.generate(pathYaml1, pathYaml2);
+        assertThat(resultDefaultYaml).isEqualTo(stylishExpected);
+
+        String resultJson = Differ.generate(pathJson1, pathJson2, "stylish");
+        assertThat(resultJson).isEqualTo(stylishExpected);
+
+        String resultYaml = Differ.generate(pathYaml1, pathYaml2, "stylish");
+        assertThat(resultYaml).isEqualTo(stylishExpected);
     }
 
     @Test
-    void testYamlStylish() throws Exception {
-        String result = Differ.generate(pathYaml1, pathYaml2, "stylish");
-        assertThat(result).isEqualTo(stylishExpected);
+    void testPlain() throws Exception {
+        String resultJson = Differ.generate(pathJson1, pathJson2, "plain");
+        assertThat(resultJson).isEqualTo(plainExpected);
+
+        String resultYaml = Differ.generate(pathYaml1, pathYaml2, "plain");
+        assertThat(resultYaml).isEqualTo(plainExpected);
     }
 
     @Test
-    void testJsonPlain() throws Exception {
-        String result = Differ.generate(pathJson1, pathJson2, "plain");
-        assertThat(result).isEqualTo(plainExpected);
-    }
+    void testJson() throws Exception {
+        String resultJson = Differ.generate(pathJson1, pathJson2, "json");
+        assertThat(resultJson).isEqualTo(jsonExpected);
 
-    @Test
-    void testYamlPlain() throws Exception {
-        String result = Differ.generate(pathYaml1, pathYaml2, "plain");
-        assertThat(result).isEqualTo(plainExpected);
-    }
-
-    @Test
-    void testJsonJson() throws Exception {
-        String result = Differ.generate(pathJson1, pathJson2, "json");
-        assertThat(result).isEqualTo(jsonExpected);
-    }
-
-    @Test
-    void testYamlJson() throws Exception {
-        String result = Differ.generate(pathYaml1, pathYaml2, "json");
-        assertThat(result).isEqualTo(jsonExpected);
+        String resultYaml = Differ.generate(pathYaml1, pathYaml2, "json");
+        assertThat(resultYaml).isEqualTo(jsonExpected);
     }
 }

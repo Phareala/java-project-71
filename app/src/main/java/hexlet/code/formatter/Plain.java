@@ -1,7 +1,5 @@
 package hexlet.code.formatter;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -36,16 +34,14 @@ public class Plain {
     }
 
     private static String printObject(Object value) {
-        String result;
         if (value instanceof String) {
-            result = "'" + value + "'";
-        } else if ((value instanceof Collection<?>)
-                || (value instanceof Arrays)
-                || (value instanceof Map<?, ?>)) {
-            result = "[complex value]";
-        } else {
-            result = String.valueOf(value);
+            return "'" + value + "'";
         }
-        return result;
+
+        if (value instanceof List || value instanceof Map) {
+            return "[complex value]";
+        }
+
+        return String.valueOf(value);
     }
 }

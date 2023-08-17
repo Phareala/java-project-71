@@ -1,12 +1,16 @@
 package hexlet.code;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import static hexlet.code.Builder.buildDiff;
 
 public class Differ {
 
@@ -22,33 +26,17 @@ public class Differ {
         return generate(firstFilePath, secondFilePath, "stylish");
     }
 
-    public static List<Map<String, List<Object>>> buildDiff(Map<String, Object> map1, Map<String, Object> map2) {
-        List<Map<String, List<Object>>> diffTree = new ArrayList<>();
-        var allKeys = getSortedKeys(map1, map2);
-        for (String key : allKeys) {
-            if (map1.containsKey(key) && !map2.containsKey(key)) {
-                diffTree.add(Map.of("removable", Arrays.asList(key, map1.get(key))));
-            } else if (!map1.containsKey(key) && map2.containsKey(key)) {
-                diffTree.add(Map.of("added", Arrays.asList(key, map2.get(key))));
-            } else if ((map1.get(key) != null && map2.get(key) != null) && (map1.get(key).equals(map2.get(key)))) {
-                diffTree.add(Map.of("unaltered", Arrays.asList(key, map1.get(key))));
-            } else {
-                diffTree.add(Map.of("changeable", Arrays.asList(key, map1.get(key), map2.get(key))));
-            }
-        }
-        return diffTree;
-    }
-
-    private static Set<String> getSortedKeys(Map<String, Object> map1, Map<String, Object> map2) {
-        final TreeSet<String> allKeys = new TreeSet<>(map1.keySet());
-        allKeys.addAll(map2.keySet());
-        return allKeys;
-    }
     private static String getExtension(String filePath) {
         int index = filePath.lastIndexOf('.');
         return index > 0 ? filePath.substring(index + 1) : "";
     }
 
-//    public static
+    public static HashMap jsonMap(Path path) throws IOException {
+        return new ObjectMapper().readValue(path.toFile(), HashMap.class);
+    }
+
+    public static HashMap ymlMap(Path path) throws IOException {
+        return new YAMLMapper().readValue(path.toFile(), HashMap.class);
+    }
 
 }
