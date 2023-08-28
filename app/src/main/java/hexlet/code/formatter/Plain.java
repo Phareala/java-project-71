@@ -10,24 +10,22 @@ public class Plain {
             var key = element.get("key");
             var oldValue = element.get("oldValue");
             var newValue = element.get("newValue");
-                switch (String.valueOf(element.get("status"))) {
-                    case "unaltered" -> {
-
-                    }
-                    case "removable" -> result.append(String.format("\nProperty %s was removed",
-                            printObject(key)
-                    ));
-                    case "added" -> result.append(String.format("\nProperty %s was added with value: %s",
-                            printObject(key),
-                            printObject(newValue)
-                    ));
-                    case "changeable" -> result.append("\nProperty ").append(printObject(key))
-                            .append(" was updated. From ").append(printObject(oldValue))
-                            .append(" to ").append(printObject(newValue)
-                    );
-
-                    default -> throw new IllegalStateException("Unexpected value: " + key);
+            switch (String.valueOf(element.get("status"))) {
+                case "unaltered" -> {
                 }
+                case "removable" -> result.append(String.format("\nProperty %s was removed",
+                    printObject(key)
+                ));
+                case "added" -> result.append(String.format("\nProperty %s was added with value: %s",
+                    printObject(key),
+                    printObject(newValue)
+                ));
+                case "changeable" -> result.append("\nProperty ").append(printObject(key))
+                    .append(" was updated. From ").append(printObject(oldValue))
+                    .append(" to ").append(printObject(newValue)
+                );
+                default -> throw new IllegalStateException("Unexpected value: " + key);
+            }
         }
         return result.toString().trim();
     }
