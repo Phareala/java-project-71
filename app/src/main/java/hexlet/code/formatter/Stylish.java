@@ -4,22 +4,21 @@ import java.util.List;
 import java.util.Map;
 
 public class Stylish {
-    public static String format(List<Map<String, List<Object>>> differ) {
+    public static String format(List<Map<String, Object>> differ) {
         StringBuilder result = new StringBuilder("{");
-        for (Map<String, List<Object>> block : differ) {
-            for (Map.Entry<String, List<Object>> element : block.entrySet()) {
-                var key = element.getValue().get(0);
-                var value = element.getValue();
-                switch (element.getKey()) {
-                    case "removable" -> result.append(String.format("\n  - %s: %s", key, value.get(1)));
-                    case "added" -> result.append(String.format("\n  + %s: %s", key, value.get(1)));
-                    case "unaltered" -> result.append(String.format("\n    %s: %s", key, value.get(1)));
-                    case "changeable" -> {
-                        result.append(String.format("\n  - %s: %s", key, value.get(1)));
-                        result.append(String.format("\n  + %s: %s", key, value.get(2)));
-                    }
-                    default -> throw new IllegalStateException("Unexpected value: " + element.getKey());
+        for (Map<String, Object> element : differ) {
+            var key = element.get("key");
+            var oldValue = element.get("oldValue");
+            var newValue = element.get("newValue");
+            switch (String.valueOf(element.get("status"))) {
+                case "removable" -> result.append(String.format("\n  - %s: %s", key, oldValue));
+                case "added" -> result.append(String.format("\n  + %s: %s", key, newValue));
+                case "unaltered" -> result.append(String.format("\n    %s: %s", key, oldValue));
+                case "changeable" -> {
+                    result.append(String.format("\n  - %s: %s", key, oldValue));
+                    result.append(String.format("\n  + %s: %s", key, newValue));
                 }
+                default -> throw new IllegalStateException("Unexpected value: " + element.get("status"));
             }
         }
         result.append("\n}");
