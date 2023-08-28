@@ -1,1 +1,72 @@
-[{"unaltered":["chars1",["a","b","c"]]},{"changeable":["chars2",false,["d","e","f"]]},{"changeable":["checked",true,false]},{"changeable":["default",["value1","value2"],null]},{"changeable":["id",null,45]},{"added":["key1","value1"]},{"removable":["key2","value2"]},{"unaltered":["numbers1",[1,2,3,4]]},{"changeable":["numbers2",[22,33,44,55],[2,3,4,5]]},{"added":["numbers3",[3,4,5]]},{"removable":["numbers4",[4,5,6]]},{"removable":["obj1",{"nestedKey":"value","isNested":true}]},{"changeable":["setting1","Another value","Some value"]},{"changeable":["setting2",300,200]},{"changeable":["setting3","none",true]}]
+[ {
+  "key" : "chars1",
+  "status" : "unaltered",
+  "oldValue" : [ "a", "b", "c" ]
+}, {
+  "key" : "chars2",
+  "status" : "changeable",
+  "oldValue" : false,
+  "newValue" : [ "d", "e", "f" ]
+}, {
+  "key" : "checked",
+  "status" : "changeable",
+  "oldValue" : true,
+  "newValue" : false
+}, {
+  "key" : "default",
+  "status" : "changeable",
+  "oldValue" : [ "value1", "value2" ],
+  "newValue" : null
+}, {
+  "key" : "id",
+  "status" : "changeable",
+  "oldValue" : null,
+  "newValue" : 45
+}, {
+  "key" : "key1",
+  "status" : "added",
+  "newValue" : "value1"
+}, {
+  "key" : "key2",
+  "status" : "removable",
+  "oldValue" : "value2"
+}, {
+  "key" : "numbers1",
+  "status" : "unaltered",
+  "oldValue" : [ 1, 2, 3, 4 ]
+}, {
+  "key" : "numbers2",
+  "status" : "changeable",
+  "oldValue" : [ 22, 33, 44, 55 ],
+  "newValue" : [ 2, 3, 4, 5 ]
+}, {
+  "key" : "numbers3",
+  "status" : "added",
+  "newValue" : [ 3, 4, 5 ]
+}, {
+  "key" : "numbers4",
+  "status" : "removable",
+  "oldValue" : [ 4, 5, 6 ]
+}, {
+  "key" : "obj1",
+  "status" : "removable",
+  "oldValue" : {
+    "nestedKey" : "value",
+    "isNested" : true
+  }
+}, {
+  "key" : "setting1",
+  "status" : "changeable",
+  "oldValue" : "Another value",
+  "newValue" : "Some value"
+}, {
+  "key" : "setting2",
+  "status" : "changeable",
+  "oldValue" : 300,
+  "newValue" : 200
+}, {
+  "key" : "setting3",
+  "status" : "changeable",
+  "oldValue" : "none",
+  "newValue" : true
+} ]
