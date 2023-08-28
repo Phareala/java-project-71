@@ -1,35 +1,39 @@
 package hexlet.code;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Arrays;
-import java.util.TreeSet;
+import java.util.*;
 
 
 public class Builder {
 
-    private static Set<String> getSortedKeys(Map<String, Object> map1, Map<String, Object> map2) {
-        final TreeSet<String> allKeys = new TreeSet<>(map1.keySet());
+    public static List<Map<String, Object>> buildDiff(final Map<String, Object> map1, final Map<String, Object> map2) {
+
+        List<Map<String, Object>> resultMap = new ArrayList<>();
+        SortedSet<String> allKeys = new TreeSet<>(map1.keySet());
         allKeys.addAll(map2.keySet());
-        return allKeys;
-    }
-    public static List<Map<String, List<Object>>> buildDiff(Map<String, Object> map1, Map<String, Object> map2) {
-        List<Map<String, List<Object>>> diffTree = new ArrayList<>();
-        var allKeys = getSortedKeys(map1, map2);
         for (String key : allKeys) {
+            Map<String, Object> diffMap = new LinkedHashMap<>();
             if (map1.containsKey(key) && !map2.containsKey(key)) {
-                diffTree.add(Map.of("removable", Arrays.asList(key, map1.get(key))));
+                diffMap.put("key", key);
+                diffMap.put("status", "removable");
+                diffMap.put("oldValue", map1.get(key));
+
             } else if (!map1.containsKey(key) && map2.containsKey(key)) {
-                diffTree.add(Map.of("added", Arrays.asList(key, map2.get(key))));
+                diffMap.put("key", key);
+                diffMap.put("status", "added");
+                diffMap.put("newValue", map2.get(key));
             } else if ((map1.get(key) != null && map2.get(key) != null) && (map1.get(key).equals(map2.get(key)))) {
-                diffTree.add(Map.of("unaltered", Arrays.asList(key, map1.get(key))));
+                diffMap.put("key", key);
+                diffMap.put("status", "unaltered");
+                diffMap.put("oldValue", map1.get(key));
             } else {
-                diffTree.add(Map.of("changeable", Arrays.asList(key, map1.get(key), map2.get(key))));
+                diffMap.put("key", key);
+                diffMap.put("status", "changeable");
+                diffMap.put("oldValue", map1.get(key));
+                diffMap.put("newValue", map2.get(key));
             }
+            resultMap.add(diffMap);
         }
-        return diffTree;
+        return resultMap;
     }
 }
